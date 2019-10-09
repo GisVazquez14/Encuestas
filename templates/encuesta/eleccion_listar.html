@@ -1,0 +1,44 @@
+{% extends 'encuesta/base.html' %}
+
+{% block contenido %}
+<h1>
+  {{msn_saludo}}
+</h1>
+<div class="card">
+    <div class="card-body">
+            <a class="btn btn-secondary" href="{% url 'encuestas:eleccion_crear' %}" role="button">Añadir nueva pregunta</a>
+        <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pregunta</th>
+                <th scope="col">Respuesta</th>
+                <th scope="col">Voto</th>
+                <th scope="col">Creó</th>
+                <th scope="col">Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% for item in query_eleccion %}
+                <tr>
+                        <th scope="row">{{item.id}}</th>
+                        <th>{{item.pregunta}}</th>
+                        <th>{{item.eleccion_text}}</th>
+                        <th>{{item.votes}}</th>
+                        <th>{{item.user_creo}}</th>
+                        <th>
+                          <a class="btn btn-info" href="{% url 'encuestas:eleccion_update' item.id %}" role="button">Editar</a>
+                          <a class="btn btn-warning" href="{% url 'encuestas:eleccion_eliminar' item.id %}" role="button">Eliminar</a>
+                        </th>
+                      </tr>
+                {% endfor %}
+                    
+             
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+{% endblock contenido %}
+    

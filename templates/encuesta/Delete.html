@@ -1,0 +1,9 @@
+{% extends 'encuesta/base.html' %}
+
+{% block contenido %}
+    <form action="" method="post">
+        <h3>¿Desea eliminar este elemento? {{object}}!</h3>
+        {% csrf_token %}
+        <input class="btn btn-primary" type="submit" value="Si">
+    </form>
+{% endblock contenido %}
