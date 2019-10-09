@@ -1,2 +1,2 @@
 # Encuestas
-Ejemplo encuestas con Django 2.2 
+Ejemplo de encuestas con Django 2.2 
