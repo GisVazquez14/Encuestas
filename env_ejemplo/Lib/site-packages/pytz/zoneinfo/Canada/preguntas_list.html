@@ -1,0 +1,38 @@
+{% extends 'encuesta/base.html' %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-body">
+            <a class="btn btn-secondary" href="{% url 'encuestas:pregunta_crear' %}" role="button">Añadir nueva pregunta</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pregunta</th>
+                <th scope="col">Fecha publicacion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% for item in object_list %}
+                <tr>
+                        <th scope="row">{{item.id}}</th>
+                        <th>{{item.pregunta_txt}}</th>
+                        <th>{{item.publicacion_fecha}}</th>
+                        <th>
+                          <a class="btn btn-success" href="{% url 'encuestas:pregunta_editar' item.id %}" role="button">Editar</a>
+                          <a class="btn btn-danger" href="{% url 'encuestas:pregunta_eliminar' item.id %}" role="button">Eliminar</a>
+                        </th>
+                      </tr>
+                {% endfor %}
+                    
+             
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+{% endblock contenido %}
+    
